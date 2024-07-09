@@ -9,7 +9,7 @@
     display: flex;
 }
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -83,24 +83,27 @@ main {
 }
 
 .news-container {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 20px;
+    align-items:center;
+    margin-bottom: 15px;
 }
 
 .main-news {
     display: flex;
     background-color: #fff;
-    padding: 20px;
-    margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 80%;
+    width: 100%;
+    height: 100%;
     max-width: 1000px;
+    border-radius: 5px;
 }
 
 .news-text {
     flex: 2;
+    width: 100%;
+    
 }
 
 .news-text h2 {
@@ -162,6 +165,7 @@ main {
 
 .news-summary {
     display: flex;
+    margin-bottom: 20px;
     flex-direction: column;
     align-items: center;
     width: 80%;
@@ -175,6 +179,19 @@ main {
     margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 100%;
+}
+
+.news-summary article .image {
+    flex: 0 0 150px; /* Ancho fijo para la imagen */
+    margin-right: 20px; /* Espacio entre la imagen y el contenido */
+}
+
+.news-summary article .image img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    object-fit: cover; /* Ajuste para cubrir el espacio sin deformar */
+    border-radius: 5px; /* Bordes redondeados (opcional) */
 }
 
 .news-summary article h3 {
@@ -208,4 +225,263 @@ footer .social-media img {
 .image {
     display: flex;
     align-items: center;
+}
+
+
+
+
+
+/* Estilo del Modal-usuario */
+.modal-usuario {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Se queda fijo en la pantalla */
+    top: 0;
+    right: 0;
+    width: 350px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000; /* Se sitúa sobre el resto del contenido */
+    overflow-y: auto; /* Habilita scroll si es necesario */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0; /* Inicia invisible */
+    transform: translateX(100%); /* Se desplaza fuera de la vista */
+}
+
+.modal-usuario.active {
+    display: block;
+    opacity: 1; /* Hacer visible */
+    transform: translateX(0); /* Deslizar dentro de la vista */
+}
+
+.modal-content {
+    background-color: #FFFFFF;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    box-shadow: 0 4px 8px #000002;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.modal-content h2 {
+    color: #FF5300;
+    margin-bottom: 20px;
+}
+
+.modal-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.modal-content ul li {
+    margin: 15px 0;
+}
+
+.modal-content ul li a {
+    color: #FF5300;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.modal-content ul li a:hover {
+    text-decoration: underline;
+    color: #E04D00;
+}
+
+.profile-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.img-perfil {
+    margin-top: 5px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    color: #FFFFFF;
+}
+
+.profile-section h3 {
+    margin: 0;
+    color: #FFFFFF;
+}
+
+.btn-cerrar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 34px;
+    cursor: pointer;
+    color: #FF5300;
+}
+
+.usuarios {
+    background: none; 
+    border: none; 
+    color: #333; 
+    font-weight: bold; 
+    padding: 10px; 
+    text-decoration: none; 
+    cursor: pointer; 
+    transition: color 0.3s ease; 
+}
+
+
+.usuarios:hover {
+    color: #ff4500; 
+}
+
+
+/* Estilo del Modal-Registro */
+
+.modal-signup {
+    display: none; /* Ocultar el modal por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo con opacidad */
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-registro-content {
+    display: flex;
+    width: 100%;
+    max-width: 1500px; /* Ajusta según sea necesario */
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-registro-left {
+    display: flex;
+    background-color: #fff; /* Color opcional para el área vacía */
+    width: 100%;
+    max-width: 700px;
+    overflow: hidden;
+    height: auto;
+}
+
+.modal-registro-left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-registro-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 85px;
+    background-color: #fff;
+}
+
+#btn-cerrar-registro {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #FF5300;
+}
+
+.right {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px);
+}
+
+.imagen-full {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-slot {
+    width: 100%;
+    height: 100%;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    color: #aaa;
+    background-size: cover;
+    background-position: center;
+}
+
+.left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.formulario-registro{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 2000px;
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.formulario-registro h2 {
+    margin-bottom: 20px;
+    color: #FF5300;
+    text-align: center;
+}
+
+.formulario-registro label {
+    margin: 10px 0 15px;
+    font-weight: bold;
+    color: #555555;
+}
+
+.formulario-registroinput {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #DDDDDD;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.formulario-registro input:focus {
+    border-color: #FF5300;
+    outline: none;
+}
+
+.formulario-registro button {
+    padding: 15px;
+    font-family: 'Montserrat';
+    border: none;
+    border-radius: 5px;
+    background-color: #FF5300;
+    color: #FFFFFF;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 30px;
+}
+
+.formulario-registro button:hover {
+    background-color: #E04D00;
 }

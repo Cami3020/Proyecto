@@ -6,8 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/estilos1.css" rel="stylesheet" type="text/css"/>
         <link href="css/estilos05-06.css" rel="stylesheet" type="text/css"/>
-
-
+        <script src="/src/main/resources/static/js/modal-usuarios.js"></script>
+        <script src="/src/main/resources/static/js/modal-registro.js"></script>
+        <link rel="stylesheet" href="css/estilos00.css">
     </head>
     <body>
         <header>
@@ -23,7 +24,7 @@
                     <li><a href="pagina04.html">Noticias</a></li>
                     <li><a href="pagina05.html" class="active">Foros</a></li>
                     <li><a href="pagina06.html">Circuitos</a></li>
-                    <li><a href="pagina07.html">Usuarios</a></li>
+                    <li><a id="btnUsuarios" class="usuarios">Usuarios</a></li>
                     <li><button class="buttons" onclick="location.href = 'pagina00.html'">Sign Up</button></li>
                 </ul>
             </nav>
@@ -76,4 +77,46 @@
             <p>&copy; 2024 Pitlane News. Todos los derechos reservados.</p>
         </footer>
     </body>
+
+       <!-- Modal de Usuario -->
+       <div id="modalUsuarios" class="modal-usuario">
+        <div class="profile-section">
+            <img src="https://hips.hearstapps.com/hmg-prod/images/mercedes-gp-executive-director-toto-wolff-arrives-at-news-photo-1688760480.jpg?crop=0.667xw:1.00xh;0.257xw,0&resize=1200:*" alt="Foto de perfil" class="img-perfil">
+            <h3>Nombre de Usuario</h3>
+        </div>
+        <div class="modal-content">
+            <span class="btn-cerrar">&times;</span>
+            <h2>Opciones de Cuenta</h2>
+            <ul>
+                <li><a href="">Perfil</a></li>
+                <li><a href="">Configuración</a></li>
+                <li><a href="">Cerrar Sesión</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal de Sign Up -->
+    <div id="modalSignUp" class="modal-signup">
+        <div class="modal-registro-content">
+        <div class="modal-registro-left">
+            <img id="slideshow-image" src="https://s2.sportstatics.com/relevo/www/multimedia/202406/30/media/cortadas/1483141993-RMRnqnJ7Xh6cM3gUus2ijEN-1200x648@Relevo.jpg" alt="Slideshow Image">
+        </div>
+        <div class="modal-registro-right">
+            <div class="formulario-registro">
+                <span class="btn-cerrar-signup">&times;</span>
+                <h2>Registro</h2>
+                <label for="nombre-usuario">Nombre de usuario</label>
+                <input type="text" id="nombre-usuario" name="nombre-usuario">
+                <label for="correo">Correo</label>
+                <input type="email" id="correo" name="correo">
+                <label for="contrasena">Contraseña</label>
+                <input type="password" id="contrasena" name="contrasena">
+                <label for="confirmar-contrasena">Confirmar Contraseña</label>
+                <input type="password" id="confirmar-contrasena" name="confirmar-contrasena">
+                <button type="submit">Crear cuenta</button>
+            </div>
+        </div>
+        </div>  
+    </div>
+
 </html>
