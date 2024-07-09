@@ -1,3 +1,13 @@
+.img-logo {
+    margin-top: 5px;
+    width: 60px;
+    height: 60px;
+    object-fit: fill;
+    margin-bottom: 10px;
+    color: #FFFFFF;
+    align-items: center;
+    display: flex;
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -12,11 +22,6 @@ header {
     background-color: #fff;
     padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
 }
 
 nav ul {
@@ -47,11 +52,12 @@ nav .buttons {
     margin-left: 20px;
 }
 
-nav .buttons .sign-up {
+nav .buttons {
     background-color: #ff4500;
     color: #fff;
     padding: 10px 20px;
     border: none;
+    border-radius: 7px;
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.3s ease;
@@ -72,16 +78,81 @@ main {
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 1000px;
 }
 
-.trending-news .text {
+.news-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.main-news {
+    display: flex;
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 1000px;
+}
+
+.news-text {
     flex: 2;
 }
 
-.trending-news .image {
+.news-text h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.news-text p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.news-text a {
+    color: #FF5300;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.news-text a:hover {
+    text-decoration: underline;
+}
+
+.news-image {
     flex: 1;
     display: flex;
     justify-content: flex-end;
+}
+
+.news-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.div-noticiaprincipal {
+    display: flex;
+    padding: 20px;
+    width: 100%;
+    height: 30%;
+}
+
+.div-noticiaprincipal h2 {
+    font-size: 20px;
+}
+
+.news-container h3{
+    font-size: 10px;
+    color: #FF5300;
+}
+
+.trending-news {
+    color: #ff5300;
+    font-size: 8px;
 }
 
 .trending-news .image img {
@@ -89,11 +160,21 @@ main {
     height: auto;
 }
 
+.news-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
 .news-summary article {
     background-color: #fff;
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
 
 .news-summary article h3 {
@@ -117,4 +198,14 @@ footer .social-media a {
 
 footer .social-media img {
     height: 20px;
+}
+
+.logo-text {
+    font-size: 30px;
+    margin-left: 10px;
+}
+
+.image {
+    display: flex;
+    align-items: center;
 }
