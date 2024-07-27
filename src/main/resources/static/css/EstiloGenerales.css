@@ -1,33 +1,24 @@
-.img-logo {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    margin-right: 10px; /* Espacio entre el logo y el texto */
-}
-
-.image {
-    display: flex;
-    align-items: center; /* Centra verticalmente el logo y el texto */
-}
-.logo-text {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333; /* Color del texto */
-}
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #FFFFFF;
 }
 
 header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Centrar los elementos horizontalmente */
     align-items: center;
-    background-color: #fff;
+    background-color: #F6F7F7;
     padding: 10px 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative; /* Para posicionar el botón de usuario */
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* Permitir que el nav ocupe todo el espacio disponible */
+    justify-content: center; /* Centrar los elementos del nav */
 }
 
 nav ul {
@@ -49,16 +40,19 @@ nav ul li a {
     transition: color 0.3s ease;
 }
 
-nav ul li a:hover, nav ul li a.active {
+nav ul li a:hover,
+nav ul li a.active {
     color: #ff4500;
     border-bottom: 2px solid #ff4500;
 }
 
-nav .buttons {
-    margin-left: 20px;
+nav .btnRegistro {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Empujar los botones hacia la derecha */
 }
 
-nav .buttons {
+nav .btnRegistro button {
     background-color: #ff4500;
     color: #fff;
     padding: 10px 20px;
@@ -69,107 +63,128 @@ nav .buttons {
     transition: background-color 0.3s ease;
 }
 
-nav .buttons .sign-up:hover {
+nav .btnRegistro button:hover {
     background-color: #e63900;
 }
-
-main {
-    padding: 20px;
+/*Estilo del logo superior izquierda*/
+.img-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin-right: 10px; /* Espacio entre el logo y el texto */
 }
 
-.trending-news {
-    display: flex;
-    justify-content: space-between;
-    background-color: #fff;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 1000px;
+.logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333; /* Color del texto */
+}
+/*Boton Usuarios del nav*/
+.usuarios {
+    background: none;
+    border: none;
+    color: #333;
+    font-weight: bold;
+    padding: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    transform: translateY(-50%);
+    right: 20px; /* Ajustar según sea necesario */
 }
 
-.news-container {
+.usuarios:hover {
+    color: #ff4500;
+}
+/*Imagen del usuario superior derecha*/
+.img-section-usuario{
+    margin-top: 5px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    color: #FFFFFF;
+    border: #ff5300 2px solid;
+}
+/*Div Principal (Cuadro Gris principal para notar algo)*/
+.div-principal {
+    line-height: 1.6;
+    background-color: F6F7F7;
     width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items:center;
-    margin-bottom: 15px;
+    align-items: center;
+    margin-bottom: 0;
+    box-sizing: border-box;
 }
 
-.main-news {
+.div-principal h3 {
+    font-family: Josefin Sans;
+    margin-top: 35px;
+    font-size: 15px;
+    color: #FF5300;
+}
+
+.section-principal {
+    font-family: Josefin Sans;
     display: flex;
-    background-color: #fff;
+    background-color: #F6F7F7;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 100%;
     height: 100%;
-    max-width: 1000px;
     border-radius: 5px;
+    box-sizing: border-box;
 }
 
-.news-text {
+.texto-principal {
+    margin-left: 3%;
     flex: 2;
     width: 100%;
-    
+    box-sizing: border-box;
+    margin-right: 45px;
+    margin-bottom: 20px;
 }
 
-.news-text h2 {
-    font-size: 24px;
+.texto-principal h2 {
+    font-family: Josefin Sans;
+    font-weight: 700; 
+    font-size: 48px;
     margin-bottom: 10px;
 }
 
-.news-text p {
+.texto-principal p {
     font-size: 16px;
     margin-bottom: 10px;
 }
 
-.news-text a {
+.texto-principal a {
     color: #FF5300;
     text-decoration: none;
     font-weight: bold;
 }
 
-.news-text a:hover {
+
+.texto-principal a:hover {
     text-decoration: underline;
 }
 
-.news-image {
+.img-principal {
+    margin-right: 20%;
+    margin-top: 35px;
     flex: 1;
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.news-image img {
+.img-principal img {
     max-width: 100%;
     height: auto;
+    border-radius: 8px;
 }
 
-.div-noticiaprincipal {
-    display: flex;
-    padding: 20px;
-    width: 100%;
-    height: 30%;
-}
-
-.div-noticiaprincipal h2 {
-    font-size: 20px;
-}
-
-.news-container h3{
-    font-size: 10px;
-    color: #FF5300;
-}
-
-.trending-news {
-    color: #ff5300;
-    font-size: 8px;
-}
-
-.trending-news .image img {
-    max-width: 100%;
-    height: auto;
-}
-
-.news-summary {
+.div-secundario {
     display: flex;
     margin-bottom: 20px;
     flex-direction: column;
@@ -179,20 +194,31 @@ main {
     margin: 0 auto;
 }
 
-.news-summary article {
+.div-secundario a {
+    color: #FF5300;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+.div-secundario a:hover {
+    text-decoration: underline;
+}
+
+.div-secundario article {
     background-color: #fff;
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
     width: 100%;
 }
 
-.news-summary article .image {
+.div-secundario article .image {
     flex: 0 0 150px; /* Ancho fijo para la imagen */
     margin-right: 20px; /* Espacio entre la imagen y el contenido */
 }
 
-.news-summary article .image img {
+.div-secundario article .image img {
     width: 100%;
     max-width: 300px;
     height: auto;
@@ -200,46 +226,26 @@ main {
     border-radius: 5px; /* Bordes redondeados (opcional) */
 }
 
-.news-summary article h3 {
+.div-secundario article h3 {
     margin-top: 0;
 }
 
-.news-summary article p {
+.div-secundario article p {
     margin: 0 0 10px;
 }
 
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-}
-
-footer .social-media a {
-    margin: 0 10px;
-}
-
-footer .social-media img {
-    height: 20px;
-}
-
-.logo-text {
-    font-size: 30px;
-    margin-left: 10px;
+.hidden-text {
+    display: none;
 }
 
 .image {
     display: flex;
     align-items: center;
+    margin-bottom: 15px;
 }
 
-
-
-
-
-/* Estilo del Modal-usuario */
+/* Modal-usuario */
 .modal-usuario {
-    display: none; /* Oculto por defecto */
     position: fixed; /* Se queda fijo en la pantalla */
     top: 0;
     right: 0;
@@ -251,6 +257,7 @@ footer .social-media img {
     transition: transform 0.3s ease, opacity 0.3s ease;
     opacity: 0; /* Inicia invisible */
     transform: translateX(100%); /* Se desplaza fuera de la vista */
+    display: none; /* Oculto por defecto */
 }
 
 .modal-usuario.active {
@@ -259,7 +266,7 @@ footer .social-media img {
     transform: translateX(0); /* Deslizar dentro de la vista */
 }
 
-.modal-content {
+.modal-usuario-content {
     background-color: #FFFFFF;
     padding: 20px;
     width: 100%;
@@ -268,37 +275,43 @@ footer .social-media img {
     box-shadow: 0 4px 8px #000002;
     border-radius: 3px;
     box-sizing: border-box;
+    transition: transform 0.3s ease;
 }
 
-.modal-content h2 {
+.modal-usuario-content h2 {
     color: #FF5300;
     margin-bottom: 20px;
 }
 
-.modal-content ul {
+.modal-usuario-content ul {
     list-style: none;
     padding: 0;
 }
 
-.modal-content ul li {
+.modal-usuario-content ul li {
     margin: 15px 0;
 }
 
-.modal-content ul li a {
+.modal-usuario-content ul li a {
     color: #FF5300;
     text-decoration: none;
     font-size: 16px;
     transition: color 0.3s ease;
 }
 
-.modal-content ul li a:hover {
+.modal-usuario-content ul li a:hover {
     text-decoration: underline;
     color: #E04D00;
 }
 
-.profile-section {
+.contenido-barra-derecha {
     text-align: center;
     margin-bottom: 20px;
+}
+
+.contenido-barra-derecha h3 {
+    margin: 0;
+    color: #FFFFFF;
 }
 
 .img-perfil {
@@ -311,11 +324,6 @@ footer .social-media img {
     color: #FFFFFF;
 }
 
-.profile-section h3 {
-    margin: 0;
-    color: #FFFFFF;
-}
-
 .btn-cerrar {
     position: absolute;
     top: 10px;
@@ -325,27 +333,9 @@ footer .social-media img {
     color: #FF5300;
 }
 
-.usuarios {
-    background: none; 
-    border: none; 
-    color: #333; 
-    font-weight: bold; 
-    padding: 10px; 
-    text-decoration: none; 
-    cursor: pointer; 
-    transition: color 0.3s ease; 
-}
-
-
-.usuarios:hover {
-    color: #ff4500; 
-}
-
-
-/* Estilo del Modal-Registro */
-
-.modal-signup {
-    display: none; /* Ocultar el modal por defecto */
+/* Modal-Registro */
+.modal-registro {
+    
     position: fixed;
     top: 0;
     left: 0;
@@ -356,22 +346,27 @@ footer .social-media img {
     display: flex;
     justify-content: center;
     align-items: center;
+    display: none; /* Ocultar el modal por defecto */
 }
 
 .modal-registro-content {
     display: flex;
     width: 100%;
-    max-width: 1500px; /* Ajusta según sea necesario */
-    background-color: #FFFFFF;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1500px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
     border-radius: 5px;
     position: relative;
-    overflow: hidden;
 }
 
 .modal-registro-left {
+    flex: 1;
     display: flex;
-    background-color: #fff; /* Color opcional para el área vacía */
+    justify-content: center;
+    align-items: center;
+    background-color: #FF5300; /* O cualquier color opcional para el área vacía */
     width: 100%;
     max-width: 700px;
     overflow: hidden;
@@ -394,13 +389,37 @@ footer .social-media img {
     background-color: #fff;
 }
 
-#btn-cerrar-registro {
+.modal-registro-right h2 {
+    color: #FF5300;
+    margin-bottom: 20px;
+}
+
+.btn-cerrar {
     position: absolute;
     top: 10px;
     right: 10px;
     font-size: 24px;
     cursor: pointer;
     color: #FF5300;
+}
+
+.btn-cerrar-signup {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.btn-cerrar-signup:hover,
+.btn-cerrar-signup:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
 }
 
 .right {
@@ -411,11 +430,6 @@ footer .social-media img {
     height: calc(100vh - 60px);
 }
 
-.imagen-full {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
 
 .image-slot {
     width: 100%;
@@ -439,7 +453,7 @@ footer .social-media img {
     overflow: hidden;
 }
 
-.formulario-registro{
+.formulario-registro {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -462,7 +476,7 @@ footer .social-media img {
     color: #555555;
 }
 
-.formulario-registroinput {
+.formulario-registro input {
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #DDDDDD;
@@ -491,3 +505,20 @@ footer .social-media img {
 .formulario-registro button:hover {
     background-color: #E04D00;
 }
+
+footer {
+    background-color: #ff5300;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+footer .social-media a {
+    margin: 0 10px;
+}
+
+footer .social-media img {
+    height: 20px;
+}
+
+
