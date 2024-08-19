@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Inicio</title>
+    </head>
+    <body>
+        <main th:fragment="mainNoticias">
+            <h2 class="text-center">Noticias</h2>
+            <div class="container mt-5" th:if="${noticias != null and !noticias.empty}">
+                <div class="row">
+                    <div class="col-md-4" th:each="noticia, contador : ${noticias}">
+                        <div class="card mb-4">
+                            <img th:src="${noticia.imagenNoticia}" class="card-img-top" alt="Noticia 1"/>
+                            <div class="card-body">
+                                <h5 class="card-title">[[${noticia.tituloNoticia}]]</h5>
+                                <p class="card-text collapsed-text">
+                                    [[${noticia.textoNoticia}]]
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container" sec:authorize="hasRole('ROLE_ADMIN')">
+                <form th:action="@{/noticias/guardar}" th:object="${noticia}" method="POST" class="was-validated" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="nombre">Título Noticia</label>
+                            <input type="text" class="form-control" name="tituloNoticia" required="true"/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="apellidos">Texto Noticia</label>
+                            <input type="text" class="form-control" name="textoNoticia" required="true"/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="imagen">Imagen Noticia</label>
+                            <input type="text" class="form-control" id="imagenNoticia" name="imagenNoticia" required="true"/>
+                        </div>
+                        <div>
+                            <img id="imgPrevisualizarNoticia" style="max-width:300px;max-height:300px"/>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit">Guardar</button>
+                    </div>
+                </form>
+            </div>
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        </main>
+    </body>
+</html>

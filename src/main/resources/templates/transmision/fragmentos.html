@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Transmisión</title>
+    </head>
+    <body>
+        <main th:fragment="mainTransmision">
+            <div class="div-principal text-center justify-content-center">
+                <h2 class="text-center">Transmisión</h2>
+                <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/O3hw1BUD-KY?si=F833hqRrRBdfrmtp" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>-->
+            </div>
+            <div class="div-secundario d-none">
+                <section class="news-summary">
+                    <article>
+                        <div class="image">
+                            <img src="https://d3cm515ijfiu6w.cloudfront.net/wp-content/uploads/2023/05/31135942/lance-stroll-aston-martin-monaco-planet-f1-2023.jpg" alt="Palo de Marko">
+                        </div>
+                        <h3>Palo de Marko a Stroll: “Me pregunto si realmente quiere ser piloto”</h3>
+                        <p>No contento con sus duras declaraciones a Pérez, el asesor de Red Bull cuestiona el nivel del piloto de Aston Martin. “Lo mío es hablar en pista”, dice el canadiense...</p>
+                        <a href="#">more ...</a>
+                    </article>
+                    <article>
+                        <div class="image">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8CaETa6ulbXsehTH7ia51pKkcTZlriZkTTg&s" alt="Vasseur">
+                        </div>
+                        <h3>Vasseur pide no perder el foco</h3>
+                        <p>El Gran Premio de Fórmula 1 en Canadá no será recordado en Ferrari con agrado. La Scuderia salió de Gilles Villeneuve con un coche dañado y más...</p>
+                        <p class="hidden-text" id="more-text3">
+                            El Gran Premio de Fórmula 1 de Canadá no será recordado en Ferrari con agrado. La Scuderia sufrió en el Gilles Villeneuve un doble cero doloroso, y más teniendo en cuenta que venían de la victoria de Charles Leclerc en Mónaco, acompañado en el podio por Carlos Sainz. En Montreal primero abandonó el monegasco por problemas mecánicos y después lo hizo el español.
+                        </p>
+                        <a href="#" id="show-more3">more ...</a>
+                    </article>
+                </section>
+            </div>
+            <div class="videosYT" th:if="${transmisiones != null and !transmisiones.empty}">
+                <div th:each="transmision, contador : ${transmisiones}">
+                    <h2>Video #[[${contador.count}]]</h2>
+                    <iframe width="560" height="315" th:src="'https://www.youtube.com/embed/' + ${transmision.urlTransmision}"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+
+        </main>
+    </body>
+</html>

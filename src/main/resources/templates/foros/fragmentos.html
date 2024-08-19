@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Inicio</title>
+    </head>
+    <body>
+        <main th:fragment="mainForos" class="container">
+            <h2>Foro</h2>
+            <!-- Formulario para añadir nuevas publicaciones -->
+            <form id="new-post-form" th:action="@{/foros/guardar}" th:object="${foro}" method="POST">
+                <h3>Nueva Publicación</h3>
+                <input type="text" id="post-title" name="temaForo" placeholder="Tema de la publicación"/>
+                <textarea id="post-content" name="mensajeForo" placeholder="Escribe tu publicación aquí"></textarea>
+                <button type="submit">Publicar</button>
+            </form>
+            <div id="forum-posts" th:if="${foros != null and !foros.empty}">
+                <div class="forum-post" th:each="foro, contador : ${foros}">
+                    <div class="user-info">
+                        <div class="user-avatar"></div>
+                        <div class="user-details">
+                            <h3>[[${foro.temaForo}]]</h3>
+                            <p>[[${foro.mensajeForo}]]</p>
+                        </div>
+                    </div>
+                    <div class="post-meta">
+                        <p> [[${foro.fechaPublicacion}]]</p>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </body>
+</html>

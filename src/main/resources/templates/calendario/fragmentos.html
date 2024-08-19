@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Inicio</title>
+    </head>
+    <body>
+        <main th:fragment="mainCalendario">
+            <h2 class="text-center">Calendario</h2>
+            
+            <div class="container my-5" th:if="${calendarios != null and !calendarios.empty}">
+                <div class="accordion" id="calendarAccordion">
+
+
+                    <div class="card" th:each="calendario, contador : ${calendarios}">
+                        <div class="card-header" th:id="'heading' + ${contador.count}">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" th:data-target="'#collapse' + ${contador.count}" aria-expanded="false" th:aria-controls="'collapse' + ${contador.count}">
+                                    [[${calendario.tituloCalendario}]]
+                                </button>
+                            </h2>
+                        </div>
+                        <div th:id="'collapse' + ${contador.count}" class="collapse" th:aria-labelledby="'heading' + ${contador.count}" data-parent="#calendarAccordion">
+                            <div class="card-body">
+                                <p>[[${calendario.textoCalendario}]]</p>
+                                <h5>Podio</h5>
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Posición</th>
+                                            <th scope="col">Piloto</th>
+                                            <th scope="col">Equipo</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">P1</th>
+                                            <td>[[${calendario.pilotoPrimerLugar}]]</td>
+                                            <td>[[${calendario.equipoPrimerLugar}]]</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">P2</th>
+                                            <td>[[${calendario.pilotoSegundoLugar}]]</td>
+                                            <td>[[${calendario.equipoSegundoLugar}]]</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">P3</th>
+                                            <td>[[${calendario.pilotoTercerLugar}]]</td>
+                                            <td>[[${calendario.equipoTercerLugar}]]</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 
+            </div>
+            
+            <div class="container" sec:authorize="hasRole('ROLE_ADMIN')">
+                <form th:action="@{/calendario/guardar}" th:object="${calendario}" method="POST" class="was-validated" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="tituloCalendario">Título Calendario</label>
+                            <input type="text" class="form-control" name="tituloCalendario" id="tituloCalendario" required="true"/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="textoCalendario">Descripción Calendario</label>
+                            <input type="text" class="form-control" name="textoCalendario" id="textoCalendario" required="true"/>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="pilotoPrimerLugar">Piloto primer lugar</label>
+                                <input type="text" class="form-control" name="pilotoPrimerLugar" id="pilotoPrimerLugar" required="true"/>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="equipoPrimerLugar">Equipo primer lugar</label>
+                                <input type="text" class="form-control" name="equipoPrimerLugar" id="equipoPrimerLugar" required="true"/>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="pilotoSegundoLugar">Piloto segundo lugar</label>
+                                <input type="text" class="form-control" name="pilotoSegundoLugar" id="pilotoSegundoLugar" required="true"/>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="equipoSegundoLugar">Equipo segundo lugar</label>
+                                <input type="text" class="form-control" name="equipoSegundoLugar" id="equipoSegundoLugar" required="true"/>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="pilotoTercerLugar">Piloto tercer lugar</label>
+                                <input type="text" class="form-control" name="pilotoTercerLugar" id="pilotoTercerLugar" required="true"/>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="equipoTercerLugar">Equipo tercer lugar</label>
+                                <input type="text" class="form-control" name="equipoTercerLugar" id="equipoTercerLugar" required="true"/>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit">Guardar</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="container" sec:authorize="hasRole('ROLE_PROMOTOR')">
+                <form th:action="@{/calendario/guardar}" th:object="${calendario}" method="POST" class="was-validated" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="tituloCalendario">Título Calendario</label>
+                            <input type="text" class="form-control" name="tituloCalendario" id="tituloCalendario" required="true"/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="textoCalendario">Descripción Calendario</label>
+                            <input type="text" class="form-control" name="textoCalendario" id="textoCalendario" required="true"/>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="pilotoPrimerLugar">Piloto primer lugar</label>
+                                <input type="text" class="form-control" name="pilotoPrimerLugar" id="pilotoPrimerLugar" required="true"/>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="equipoPrimerLugar">Equipo primer lugar</label>
+                                <input type="text" class="form-control" name="equipoPrimerLugar" id="equipoPrimerLugar" required="true"/>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="pilotoSegundoLugar">Piloto segundo lugar</label>
+                                <input type="text" class="form-control" name="pilotoSegundoLugar" id="pilotoSegundoLugar" required="true"/>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="equipoSegundoLugar">Equipo segundo lugar</label>
+                                <input type="text" class="form-control" name="equipoSegundoLugar" id="equipoSegundoLugar" required="true"/>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="pilotoTercerLugar">Piloto tercer lugar</label>
+                                <input type="text" class="form-control" name="pilotoTercerLugar" id="pilotoTercerLugar" required="true"/>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="equipoTercerLugar">Equipo tercer lugar</label>
+                                <input type="text" class="form-control" name="equipoTercerLugar" id="equipoTercerLugar" required="true"/>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit">Guardar</button>
+                    </div>
+                </form>
+            </div>
+              
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        </main>
+    </body>
+</html>

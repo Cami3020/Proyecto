@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Manejar el modal de registro
     const modalRegistro = document.getElementById("modalRegistro");
-    const btnRegistro = document.querySelector(".btnRegistro");
+    const btnRegistro = document.getElementById("btnRegistro");
     const spanRegistro = document.querySelector("#modalRegistro .btn-cerrar-signup");
 
     // Asegúrate de que el modal de registro esté correctamente oculto inicialmente
@@ -128,3 +128,18 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             });
 });
+
+
+/* La siguiente función se utiliza para visualizar la imagen seleccionada en la
+ * página html donde se desea "cargar" utilizando un llamado "ajax"*/
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#blah')
+                    .attr('src', e.target.result)
+                    .height(200);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}

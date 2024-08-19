@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/plantilla :: head">
+        <title>Trnasmisiión</title>
+    </head>
+    <body>
+
+        <header th:replace="layout/plantilla :: header"/>
+
+        <main th:replace="calendario/fragmentos :: mainCalendario" />
+
+        <footer th:replace="layout/plantilla :: footer" />
+
+        <section th:replace="home/fragmentos :: modalUsuarios" />
+
+        <section th:replace="home/fragmentos :: modalRegistro" />
+
+    </body>
+</html>

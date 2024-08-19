@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Inicio</title>
+    </head>
+    <body>
+        <main th:fragment="mainCircuitos">
+            
+            <h2 class="text-center">Circuitos</h2>
+            <div class="container" th:if="${circuitos != null and !circuitos.empty}">
+                <div class="text-center mb-5" th:each="circuito, contador : ${circuitos}">
+                    <h3 class="text-center"> [[${contador.count}]]. [[${circuito.tituloCircuito}]]</h3>
+                    
+                    <img th:src="${circuito.imagenCircuito}" class="mb-3" height="400" width="600"/>
+
+                    <p class="texto">
+                        [[${circuito.textoCircuito}]]
+                    </p>
+                    <hr/>
+                </div>
+            </div>
+            <div class="container" sec:authorize="hasRole('ROLE_ADMIN')">
+                <form th:action="@{/circuitos/guardar}" th:object="${circuito}" method="POST" class="was-validated" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="nombre">Título Circuito</label>
+                            <input type="text" class="form-control" name="tituloCircuito" required="true"/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="apellidos">Descripción Circuito</label>
+                            <input type="text" class="form-control" name="textoCircuito" required="true"/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="imagen">Imagen Circuito</label>
+                            <input type="text" class="form-control" id="imagenCircuito" name="imagenCircuito" required="true"/>
+                        </div>
+                        <div>
+                            <img id="imgPrevisualizarCircuito" style="max-width:300px;max-height:300px"/>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </body>
+</html>

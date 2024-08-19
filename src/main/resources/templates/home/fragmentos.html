@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Inicio</title>
+    </head>
+    <body>
+        <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
+
+        <main th:fragment="mainHome">
+            <div class="div-principal">
+                <section class="section-principal">
+                    <div class="texto-principal">
+                        <h3>--- Trending News</h3>
+                        <h2>Vía libre para Antonelli</h2>
+                        <p>
+                            La FIA modifica el código deportivo para permitir a pilotos de 17
+                            años participar en la Fórmula. 
+                            Si se toma la clasificación de la Fórmula 2 como referencia, el
+                            certamen en el que compite con Prema, está lejos de ser el piloto
+                            más destacado en lo que va de año porque es sexto con casi la
+                            mitad de puntos (48) que el líder Paul Aron (80). Es más, aún no
+                            ha pisado el podio tras cinco citas. Sin embargo, si hablamos del
+                            futuro de la Fórmula 1, su nombre es el que suena con más fuerza y
+                            ahora Andrea Kimi Antonelli tiene vía libre para no tener que
+                            esperar mucho para dar el salto al Mundial gracias a un añadido de
+                            la FIA a su normativa.
+                        </p>
+                    </div>
+                    <div class="img-principal">
+                        <img
+                            src="https://cdn-2.motorsport.com/images/amp/2d1ZNawY/s6/andrea-kimi-antonelli-prema-ra.jpg"
+                            alt="Imagen de la noticia"
+                            />
+                    </div>
+                </section>
+            </div>
+            <div class="div-secundario" th:if="${homes != null and !homes.empty}">
+                <article th:each="home, contador : ${homes}">
+                    <div class="image">
+                        <img
+                            th:src="${home.imagenHome}"
+                            alt="Palo de Marko"
+                            />
+                    </div>
+                    <h3>
+                        [[${home.tituloHome}]]
+                    </h3>
+                    <p>
+                        [[${home.textoHome}]]
+                    </p>
+                </article>
+                
+            </div>
+        </main>
+
+        <section th:fragment="modalUsuarios">
+            <!-- Modal de Usuario -->
+            <div id="modalUsuarios" class="modal-usuario" sec:authorize="isAuthenticated()">
+                <div class="contenido-barra-derecha">
+                    <img
+                        th:src="@{${session.usuarioImagen}}"
+                        alt="Foto de perfil"
+                        class="img-perfil"
+                        />
+                    <h3 sec:authentication='name'></h3>
+                </div>
+                <div class="modal-usuario-content">
+                    <span class="btn-cerrar">&times;</span>
+                    <br/>
+                    <h2>Opciones de Cuenta</h2>
+                    <ul>
+                        <li><a th:href="@{/usuario/listado}">Configuración</a></li>
+                        <li><form method="post" th:action="@{/logout}"><button th:action="@{/logout}" type="submit" class="btn btn-sm btn-danger">[[#{header.logout}]]</button></form></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section th:fragment="modalRegistro">
+            <!-- Modal de Sign Up -->
+            <div id="modalRegistro" class="modal-registro" sec:authorize="isAuthenticated()">
+                <div class="modal-registro-content">
+                    <div class="modal-registro-left" >
+                        <img
+                            id="slideshow-image"
+                            src="https://s2.sportstatics.com/relevo/www/multimedia/202406/30/media/cortadas/1483141993-RMRnqnJ7Xh6cM3gUus2ijEN-1200x648@Relevo.jpg"
+                            alt="Slideshow Image"
+                            />
+                    </div>
+                    <div class="modal-registro-right">
+                        <div class="formulario-registro">
+                            <span class="btn-cerrar-signup">&times;</span>
+                            <h2>Registro</h2>
+                            <!--<form method="POST" th:action="@{/registro/crearUsuario}" th:object="${usuario}" class="was-validated">
+                                <label for="username">Nombre de usuario</label>
+                                <input type="text" id="username" name="username" th:field="*{username}" required="true" />
+                                <label for="nombre">Nombre</label>
+                                <input type="text" id="nombre" name="nombre" th:field="*{nombre}" required="true" />
+                                <label for="apellidos">Apellidos</label>
+                                <input type="text" id="apellidos" name="apellidos" th:field="*{apellidos}" required="true" />
+                                <label for="correo">Correo</label>
+                                <input type="email" id="correo" name="correo" th:field="*{correo}" required="true" />
+                                <label for="password">Contraseña</label>
+                                <input type="password" id="password" name="password" th:field="*{password}" required="true" />
+                                <label for="confirmar-contrasena">Confirmar Contraseña</label>
+                                <input type="password" id="confirmar-contrasena" required="true" />
+                                <label for="rutaImagenRegistro">Imagen</label>
+                                <input type="password" id="rutaImagenRegistro" name="rutaImagen" th:field="*{rutaImagen}" required="true" />
+                                <div>
+                                    <img id="imgPrevisualizarRegistro" style="max-width:300px;max-height:300px"/>
+                                </div>
+                                <button type="submit">Crear cuenta</button>
+                            </form>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </body>
+</html>

@@ -17,8 +17,8 @@
     <description>Proyecto final Pitlane News</description>
     
     <properties>
-        <java.version>22</java.version>
-        <start-class>pitlane_news.PitlaneNewsApplication</start-class>
+        <java.version>20</java.version>
+        <start-class>Pitlane.PitlaneApplication</start-class>
     </properties>
     
     <dependencies>
@@ -85,7 +85,7 @@
             <groupId>com.google.firebase</groupId>
             <artifactId>firebase-admin</artifactId>
             <version>9.1.1</version>
-        </dependency> 
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -104,45 +104,25 @@
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
         <dependency>
-            <groupId>net.sf.jasperreports</groupId>
-            <artifactId>jasperreports</artifactId>
-            <version>6.20.5</version>
-        </dependency>
-        <dependency>
-            <groupId>net.sf.jasperreports</groupId>
-            <artifactId>jasperreports</artifactId>
-            <version>6.20.5</version>
+            <groupId>io.github.ilyalisov</groupId>
+            <artifactId>storage</artifactId>
+            <version>0.1.0</version>
+            <type>jar</type>
         </dependency>
     </dependencies>
-
+   
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
                 <configuration>
-                    <mainClass>${start-class}</mainClass>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>22</source>
-                    <target>22</target>
                 </configuration>
             </plugin>
         </plugins>
